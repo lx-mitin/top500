@@ -36,19 +36,3 @@ def get_tflops_by_country(page):
 
     return df_country
 
-
-def get_gdp_by_country(page, class_):
-    gdp_nom = {}
-    p = requests.get('https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)')
-    page = BeautifulSoup(p.text, 'html5lib').body
-    table = page.find('table', class_='wikitable sortable')
-    records = table.find('tbody').find_all('tr')
-
-    for r in range(2, len(records)):
-        record = records[r]
-        cells = record.find_all('td')
-        country = [s for s in cells[1].strings][1]
-        gdp = round(float(re.sub(r'[^0-9.]','',cells[2].get_text()))/1000)
-        gdp_nom.update({country: gdp})
-
-    return gdp_nom
