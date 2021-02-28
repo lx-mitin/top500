@@ -26,7 +26,10 @@ def get_tflops_by_country(page):
 
         for record in records:
             cells = record.find_all('td')
-            country = [s for s in cells[1].strings][1]
+            #print([s for s in cells[1].strings][-1])
+            
+            country = [s for s in cells[1].strings][-1]
+            #print(country)
             rmax = round(float(re.sub(r'[^0-9.]','',cells[4].get_text())))
             top500.append((country, rmax))
 

@@ -9,7 +9,8 @@ def print_chart(x, y, palette, ylabel):
         )
     chart.set_xticklabels(
         chart.get_xticklabels(),
-        rotation=90
+        rotation=90,
+        ha='left'
         )
     chart.set_xlabel('')
     chart.set_ylabel(ylabel=ylabel)
