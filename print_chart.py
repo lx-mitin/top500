@@ -15,5 +15,6 @@ def print_chart(x, y, palette, ylabel):
     chart.set_xlabel('')
     chart.set_ylabel(ylabel=ylabel)
 
+
     return chart
 
